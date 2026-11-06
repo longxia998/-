@@ -304,6 +304,86 @@
       }
       .sticky nav a.primary{ background:linear-gradient(180deg,var(--red-hot),var(--red)); color:#fff; border-color:var(--gold-hi); }
 
+      /* ---------- sales counter ---------- */
+      .live-dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:#ff6a55; margin-right:5px; vertical-align:1px; }
+      .sales-bar{
+        margin-top:22px; display:flex; align-items:center; gap:14px;
+        background:linear-gradient(90deg,#4a030a,#7d0815 55%,#4a030a);
+        border:1px solid rgba(246,196,83,.55); border-radius:12px;
+        padding:11px 14px; color:#fff;
+      }
+      .sales-bar .sb-main{ flex:1; min-width:0; }
+      .sales-bar .sb-label{ font-size:11px; color:#ffcdb4; letter-spacing:.14em; font-weight:700; }
+      .sales-bar .sb-num{ font-size:25px; font-weight:900; color:var(--gold-hi); line-height:1.2; font-variant-numeric:tabular-nums; }
+      .sales-bar .sb-num small{ font-size:12px; color:#ffd9c4; font-weight:700; }
+      .sales-bar .sb-today{ flex:0 0 auto; text-align:right; border-left:1px dashed rgba(246,196,83,.45); padding-left:14px; }
+      .sales-bar .sb-today .sb-num{ font-size:20px; color:#fff; }
+      .pack .p-sold{ margin-top:10px; display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:800; color:var(--red-deep); }
+      .pack .p-sold .dot{ width:7px; height:7px; border-radius:50%; background:var(--red-hot); flex:0 0 auto; }
+      .pack .p-sold b{ color:var(--red); font-size:15px; font-variant-numeric:tabular-nums; }
+
+      /* ---------- sales popup ---------- */
+      .sales-pop{
+        position:fixed; inset:0; z-index:100; overflow-y:auto;
+        display:flex; align-items:center; justify-content:center;
+        padding:24px 18px;
+        background:
+          radial-gradient(600px 320px at 15% -40px, rgba(246,196,83,.30), transparent 70%),
+          radial-gradient(700px 380px at 90% 30%, rgba(227,19,43,.38), transparent 70%),
+          linear-gradient(180deg,#6d060f 0%, #8a0815 58%, #5f050e 100%);
+      }
+      .sales-pop[hidden]{ display:none; }
+      .pop-close{
+        position:absolute; top:calc(12px + env(safe-area-inset-top)); right:14px;
+        width:42px; height:42px; border-radius:50%; cursor:pointer;
+        background:rgba(43,2,6,.55); border:1px solid rgba(246,196,83,.65);
+        color:var(--gold-hi); font-size:22px; line-height:1;
+        display:flex; align-items:center; justify-content:center;
+      }
+      .pop-in{ text-align:center; color:#fff; width:100%; max-width:520px; }
+      .pop-chip{
+        display:inline-block; background:var(--gold); color:#7d0815;
+        font-size:12.5px; font-weight:900; letter-spacing:.2em;
+        padding:6px 16px; border-radius:999px; box-shadow:0 4px 0 #9a6a0d;
+      }
+      .pop-title{ margin:20px 0 0; font-size:clamp(30px,9vw,42px); font-weight:900; line-height:1.3; letter-spacing:.06em; text-shadow:0 8px 24px rgba(0,0,0,.4); }
+      .pop-label{ margin-top:26px; font-size:13px; letter-spacing:.34em; text-indent:.34em; color:#ffd9c4; font-weight:700; }
+      .pop-total{
+        margin-top:4px; font-size:clamp(58px,17vw,92px); font-weight:900; line-height:1.05;
+        color:var(--gold); font-variant-numeric:tabular-nums;
+        text-shadow:0 3px 0 #8a5a08, 0 12px 30px rgba(0,0,0,.45);
+      }
+      .pop-unit{ font-size:13px; letter-spacing:.3em; text-indent:.3em; color:var(--gold-hi); font-weight:700; }
+      .pop-today{
+        display:inline-block; margin-top:18px;
+        background:rgba(43,2,6,.5); border:1px solid rgba(246,196,83,.55); border-radius:999px;
+        padding:7px 18px; font-size:14px; font-weight:800; letter-spacing:.08em;
+      }
+      .pop-today b{ color:var(--gold-hi); font-size:17px; font-variant-numeric:tabular-nums; }
+      .pop-progress{ margin:24px auto 0; max-width:440px; text-align:left; }
+      .pop-track{ height:14px; border-radius:999px; background:rgba(43,2,6,.6); border:1px solid rgba(246,196,83,.5); overflow:hidden; }
+      .pop-fill{ height:100%; width:0%; border-radius:999px; background:linear-gradient(90deg,#c98f1b,var(--gold) 55%,var(--gold-hi)); transition:width .8s ease; }
+      .pop-prow{ display:flex; justify-content:space-between; gap:10px; margin-top:7px; font-size:11.5px; color:#ffd9c4; font-weight:700; letter-spacing:.06em; }
+      .pop-prow b{ color:var(--gold-hi); font-variant-numeric:tabular-nums; }
+      .pop-copy{ margin:20px auto 0; max-width:420px; font-size:13.5px; line-height:1.8; color:#ffe3d3; }
+      .pop-cta{
+        margin-top:22px; cursor:pointer; font-family:inherit;
+        background:linear-gradient(180deg,var(--red-hot),var(--red));
+        border:2px solid var(--gold-hi); color:#fff;
+        font-size:18px; font-weight:900; letter-spacing:.26em; text-indent:.26em;
+        padding:14px 44px; border-radius:999px;
+        box-shadow:0 10px 26px rgba(0,0,0,.4);
+      }
+      .pop-live{ margin-top:16px; font-size:11px; letter-spacing:.24em; color:rgba(255,217,196,.75); font-weight:600; }
+      @media (prefers-reduced-motion: no-preference){
+        .live-dot, .pack .p-sold .dot{ animation:salespulse 1.6s ease-in-out infinite; }
+        @keyframes salespulse{ 0%,100%{ opacity:1; } 50%{ opacity:.3; } }
+        .sales-pop{ animation:popfade .35s ease; }
+        .pop-in{ animation:poprise .45s ease; }
+        @keyframes popfade{ from{ opacity:0; } to{ opacity:1; } }
+        @keyframes poprise{ from{ opacity:0; transform:translateY(14px) scale(.98); } to{ opacity:1; transform:none; } }
+      }
+
       /* ---------- responsive ---------- */
       @media (max-width:560px){
         .packs{ grid-template-columns:1fr; }
@@ -329,6 +409,26 @@
     </style>
   </head>
   <body>
+    <!-- sales popup -->
+    <div class="sales-pop" id="sales-pop" role="dialog" aria-modal="true" aria-label="双十一实时销量">
+      <button class="pop-close" id="pop-close" type="button" aria-label="关闭">×</button>
+      <div class="pop-in">
+        <span class="pop-chip">双十一 · 限时疯抢进行中</span>
+        <h2 class="pop-title">全场礼包<br />正在被疯抢</h2>
+        <div class="pop-label"><span class="live-dot"></span>累计已抢礼包</div>
+        <div class="pop-total" id="pop-total">0</div>
+        <div class="pop-unit">个礼包已被抢走</div>
+        <div><span class="pop-today">今日已抢 <b id="pop-today">0</b> 个</span></div>
+        <div class="pop-progress">
+          <div class="pop-track"><div class="pop-fill" id="pop-fill"></div></div>
+          <div class="pop-prow"><span>已完成 <b id="pop-pct">0%</b></span><span>目标 100,000 个</span></div>
+        </div>
+        <p class="pop-copy">人气爆棚，好礼不等人——119 元、199 元秒杀礼包都在被抢，看中就下手，晚一步就被别人抢先了。</p>
+        <button class="pop-cta" id="pop-cta" type="button">立即抢购</button>
+        <div class="pop-live">数据实时更新中</div>
+      </div>
+    </div>
+
     <div class="page">
 
       <!-- countdown ribbon -->
@@ -368,6 +468,18 @@
         <p class="slogan">亲近皮肤 · 惟一选择</p>
       </header>
 
+      <!-- live sales bar -->
+      <div class="sales-bar" aria-label="实时销量">
+        <div class="sb-main">
+          <div class="sb-label"><span class="live-dot"></span>礼包累计已抢</div>
+          <div class="sb-num"><span id="bar-total">0</span><small> 个</small></div>
+        </div>
+        <div class="sb-today">
+          <div class="sb-label">今日已抢</div>
+          <div class="sb-num"><span id="bar-today">0</span><small> 个</small></div>
+        </div>
+      </div>
+
       <!-- packages -->
       <section id="libao">
         <div class="sec-head">
@@ -382,6 +494,7 @@
             <div class="p-pick">任选 <em>3 样</em></div>
             <div class="formula"><b>A区 选 1</b><span class="plus">＋</span><b>B区 选 2</b></div>
             <p class="p-note">A区单件就 199 元起，119 元直接抱走 3 样，先抢先得。</p>
+            <div class="p-sold"><span class="dot"></span>已抢 <b id="sold-119">0</b> 个</div>
           </article>
           <article class="pack hot">
             <div class="flag">人气主推</div>
@@ -390,6 +503,7 @@
             <div class="p-pick">任选 <em>6 样</em></div>
             <div class="formula"><b>A区 选 2</b><span class="plus">＋</span><b>B区 选 4</b></div>
             <p class="p-note">样数翻倍、单价更低；再叠加主品券，礼包价还能继续打折。</p>
+            <div class="p-sold"><span class="dot"></span>已抢 <b id="sold-199">0</b> 个</div>
           </article>
         </div>
       </section>
@@ -607,6 +721,92 @@
           setTimeout(tick, 1000);
         }
         tick();
+      })();
+    </script>
+    <script>
+      (function () {
+        var START = new Date('2026-11-05T00:00:00+08:00').getTime();
+        var END = new Date('2026-11-11T23:59:59+08:00').getTime();
+        var TARGET = 100000;
+        var DAY_TARGETS = [6000, 9000, 11000, 13000, 16000, 20000, 25000];
+        var HW = [0.10, 0.06, 0.04, 0.03, 0.03, 0.05, 0.12, 0.25, 0.45, 0.70, 0.90, 1.00, 1.05, 0.95, 0.95, 1.00, 1.05, 1.15, 1.35, 1.70, 1.95, 2.00, 1.85, 1.30];
+        var STEP = 30000, SPD = 86400000 / STEP;
+        function hourWeight(ms) {
+          var h = ms / 3600000, i = Math.floor(h) % 24, f = h - Math.floor(h);
+          return HW[i] + (HW[(i + 1) % 24] - HW[i]) * f;
+        }
+        function burst(sec) {
+          return 1 + 0.42 * Math.sin(sec / 541 + 0.7) + 0.28 * Math.sin(sec / 233 + 2.1) + 0.16 * Math.sin(sec / 89 + 4.4);
+        }
+        var cum = [0];
+        (function build() {
+          var base = 0;
+          for (var d = 0; d < 7; d++) {
+            var raw = [0], acc = 0, s, mid;
+            for (s = 1; s <= SPD; s++) {
+              mid = (s - 0.5) * STEP;
+              acc += hourWeight(mid) * burst((d * 86400000 + mid) / 1000);
+              raw.push(acc);
+            }
+            for (s = 1; s <= SPD; s++) cum.push(base + DAY_TARGETS[d] * raw[s] / acc);
+            base += DAY_TARGETS[d];
+          }
+        })();
+        function totalAt(now) {
+          if (now <= START) return 0;
+          if (now >= END) return TARGET;
+          var x = (now - START) / STEP, i = Math.floor(x);
+          if (i >= cum.length - 1) return TARGET;
+          var f = x - i;
+          return cum[i] + (cum[i + 1] - cum[i]) * f;
+        }
+        function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+        var popTotal = document.getElementById('pop-total'),
+            popToday = document.getElementById('pop-today'),
+            popFill = document.getElementById('pop-fill'),
+            popPct = document.getElementById('pop-pct'),
+            barTotal = document.getElementById('bar-total'),
+            barToday = document.getElementById('bar-today'),
+            sold119 = document.getElementById('sold-119'),
+            sold199 = document.getElementById('sold-199');
+        function setText(el, txt) { if (el && el.textContent !== txt) el.textContent = txt; }
+        function render() {
+          var now = Date.now();
+          var totalF = totalAt(now);
+          var total = Math.floor(totalF);
+          var capped = total >= TARGET;
+          var eff = Math.min(Math.max(now, START), END);
+          var dayIdx = Math.floor((eff - START) / 86400000);
+          if (dayIdx < 0) dayIdx = 0;
+          if (dayIdx > 6) dayIdx = 6;
+          var today = Math.floor(totalAt(eff) - cum[dayIdx * SPD]);
+          var n119 = Math.floor(totalF * 0.55);
+          var n199 = total - n119;
+          var totalTxt = capped ? '99,999+' : fmt(total);
+          setText(popTotal, totalTxt);
+          setText(barTotal, totalTxt);
+          setText(popToday, fmt(today));
+          setText(barToday, fmt(today));
+          setText(sold119, fmt(n119));
+          setText(sold199, fmt(n199));
+          var pct = Math.min(100, totalF / TARGET * 100);
+          popFill.style.width = pct.toFixed(1) + '%';
+          setText(popPct, (capped ? '100' : pct.toFixed(1)) + '%');
+        }
+        render();
+        setInterval(render, 1000);
+        var pop = document.getElementById('sales-pop');
+        function closePop(scroll) {
+          pop.hidden = true;
+          document.body.style.overflow = '';
+          if (scroll) {
+            var t = document.getElementById('libao');
+            if (t) t.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        document.getElementById('pop-close').addEventListener('click', function () { closePop(false); });
+        document.getElementById('pop-cta').addEventListener('click', function () { closePop(true); });
+        document.body.style.overflow = 'hidden';
       })();
     </script>
   </body>
