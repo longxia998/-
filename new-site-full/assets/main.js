@@ -37,18 +37,43 @@
     });
   }
 
-  // 下拉菜单：点击展开（触屏可用），悬停由 CSS 处理
+  // 下拉菜单：点击展开（触屏可用），悬停由 CSS 处理；回车/空格由 button 原生触发 click
   document.querySelectorAll('.nav-item > button').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       var item = btn.parentElement;
       var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.nav-item.open').forEach(function (n) { n.classList.remove('open'); });
+      document.querySelectorAll('.nav-item.open').forEach(function (n) {
+        n.classList.remove('open');
+        var b = n.querySelector(':scope > button');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
       if (!wasOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', !wasOpen ? 'true' : 'false');
     });
   });
   document.addEventListener('click', function () {
-    document.querySelectorAll('.nav-item.open').forEach(function (n) { n.classList.remove('open'); });
+    document.querySelectorAll('.nav-item.open').forEach(function (n) {
+      n.classList.remove('open');
+      var b = n.querySelector(':scope > button');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // 键盘：Esc 关闭已打开的下拉菜单与手机菜单（焦点在菜单内时回到汉堡按钮）
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var focusWasInMobileNav = mobileNav && mobileNav.contains(document.activeElement);
+    document.querySelectorAll('.nav-item.open').forEach(function (n) {
+      n.classList.remove('open');
+      var b = n.querySelector(':scope > button');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    if (mobileNav && mobileNav.classList.contains('open')) {
+      mobileNav.classList.remove('open');
+      if (burger) burger.setAttribute('aria-expanded', 'false');
+      if (focusWasInMobileNav && burger) burger.focus();
+    }
   });
 
   // 首页首屏：滚动后导航变实底（只在有 .hero 的首页生效，内页始终实底）
