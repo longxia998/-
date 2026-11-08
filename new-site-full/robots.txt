@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://longxia998.github.io/-/new-site-full/sitemap.xml
