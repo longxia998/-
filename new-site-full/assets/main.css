@@ -637,3 +637,86 @@ footer li .soon{font-size:11px;letter-spacing:.14em;border:1px solid currentColo
   /* 双列卡片底部：“查看详情”整词不换行，“即将上线”徽标整体换到下一行 */
   .card .go{font-size:12.5px;flex-wrap:wrap;white-space:nowrap;}
 }
+
+/* ---------- 第三批：四款详情变体 + 会员/九步新页 + 两项移动端精修 ---------- */
+/* 洁颜油：近方瓶身全幅展示，不裁切泵头与瓶底 */
+.pd-oil .pd-hero figure img{aspect-ratio:auto;}
+/* 复颜水：竖瓶全幅展示，浅灰底 */
+.pd-water .pd-hero figure img{aspect-ratio:auto;}
+.pd-water .pd-hero{background:var(--wash);margin:0;padding-left:max(32px,calc((100vw - 1240px)/2));padding-right:max(32px,calc((100vw - 1240px)/2));}
+@media (max-width:760px){.pd-water .pd-hero{padding-left:20px;padding-right:20px;}}
+/* 复颜乳：竖瓶全幅展示，浅绿底 */
+.pd-lotion .pd-hero figure img{aspect-ratio:auto;}
+.pd-lotion .pd-hero{background:var(--green-tint);margin:0;padding-left:max(32px,calc((100vw - 1240px)/2));padding-right:max(32px,calc((100vw - 1240px)/2));}
+@media (max-width:760px){.pd-lotion .pd-hero{padding-left:20px;padding-right:20px;}}
+/* 复颜霜：竖罐全幅展示，白底 */
+.pd-rcream .pd-hero figure img{aspect-ratio:auto;}
+/* 洁颜油专属：油膏清肌法双卡 */
+.duo-steps{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;}
+.duo-steps .duo{border-top:2px solid var(--green);padding:24px 4px 0;}
+.duo-steps .duo.on{border-top-color:var(--gold);}
+.duo-steps .no{font-family:var(--latin);font-size:13px;letter-spacing:.3em;color:var(--gold);}
+.duo-steps h3{font-size:21px;margin:12px 0 10px;}
+.duo-steps p{margin:0 0 12px;color:var(--mut);font-size:14.5px;}
+.duo-steps .go{font-size:13px;letter-spacing:.16em;color:var(--green);}
+@media (max-width:760px){.duo-steps{grid-template-columns:1fr;}}
+/* 复颜水专属：承上启下三段条 */
+.flow-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px;}
+.flow-strip div{background:var(--paper);padding:28px 26px 30px;}
+.flow-strip div.on{background:var(--green);color:#fff;}
+.flow-strip .no{font-family:var(--latin);font-size:13px;letter-spacing:.3em;color:var(--gold);}
+.flow-strip h3{font-size:19px;margin:12px 0 8px;}
+.flow-strip div.on h3{color:#fff;}
+.flow-strip p{margin:0;color:var(--mut);font-size:14px;}
+.flow-strip div.on p{color:rgba(255,255,255,.78);}
+@media (max-width:760px){.flow-strip{grid-template-columns:1fr;}}
+/* 复颜乳专属：白色可拉丝质地文字板（无图，纯文字设计） */
+.texture-panel{margin-top:44px;border-top:2px solid var(--green);border-bottom:1px solid var(--line);padding:40px 0 36px;max-width:820px;}
+.texture-panel .texture-big{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);color:var(--green);margin:0 0 18px;letter-spacing:.04em;}
+.texture-panel p{color:var(--mut);margin:0 0 14px;max-width:640px;}
+/* 复颜霜专属：包装标准三枚文字卡（无图，纯文字设计） */
+.pack-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px;}
+.pack-chips div{background:var(--paper);padding:28px 26px 30px;}
+.pack-chips .no{font-family:var(--latin);font-size:13px;letter-spacing:.3em;color:var(--gold);}
+.pack-chips h3{font-size:19px;margin:12px 0 0;line-height:1.5;}
+@media (max-width:760px){.pack-chips{grid-template-columns:1fr;}}
+/* 会员页：移动端首屏留白收紧 */
+@media (max-width:760px){.mem-hero{padding-top:110px;}}
+/* 九步护理专题页：纵向步骤长卷 */
+.routine-page .r-steps{margin:20px 0 0;border-top:1px solid var(--line);}
+.routine-page .r-step{display:grid;grid-template-columns:170px 1fr;gap:36px;padding:48px 0;border-bottom:1px solid var(--line);}
+.routine-page .r-num{font-family:var(--latin);font-size:15px;letter-spacing:.3em;color:var(--gold);padding-top:8px;}
+.routine-page .r-body h2{font-size:clamp(24px,2.6vw,32px);margin:0 0 20px;}
+.routine-page .r-prod{padding:22px 0;border-top:1px solid var(--line);}
+.routine-page .r-prod:first-of-type{border-top:none;padding-top:0;}
+.routine-page .r-prod-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;}
+.routine-page .r-prod-head h3{font-size:20px;margin:0;}
+.routine-page .r-prod-head h3 a:hover{text-decoration:underline;text-underline-offset:4px;}
+.routine-page .r-prod-head .price{font-size:20px;color:var(--green);}
+.routine-page .r-spec{color:var(--mut);font-size:14.5px;margin:10px 0 8px;}
+.routine-page .r-use{color:var(--mut);font-size:14.5px;margin:0;max-width:720px;}
+.routine-page .r-optional{padding:90px 0 0;}
+.routine-page .r-layers{padding:90px 0 0;}
+@media (max-width:760px){
+  .routine-page .r-step{grid-template-columns:1fr;gap:10px;padding:36px 0;}
+  .routine-page .r-optional,.routine-page .r-layers{padding-top:64px;}
+}
+/* 移动端精修一：品质页备案表分产品信息卡，行距与产品名层级加大 */
+@media (max-width:760px){
+  .filing-table tr{padding:18px 18px 12px;}
+  .filing-table td{padding:9px 0;}
+  .filing-table td:first-child{padding-bottom:12px;}
+  .filing-table .pname{font-size:17px;}
+  .filing-table .pspec{font-size:13px;}
+}
+/* 移动端精修二：科研页深绿长段字体层级与分区节奏 */
+@media (max-width:860px){
+  .research-page .res-hero h1{line-height:1.4;}
+  .res-tech .tech-grid article{padding:30px 26px 34px;}
+  .res-tech h3{font-size:20px;margin:12px 0 8px;}
+  .res-tech p{font-size:15px;line-height:1.95;}
+  .res-labs .lab-cols div{padding:30px 26px 34px;}
+  .res-labs h3{font-size:20px;}
+  .res-labs p{line-height:1.9;}
+  .res-countries .country-tags span{padding:12px 18px;}
+}
