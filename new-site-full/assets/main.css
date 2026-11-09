@@ -554,7 +554,9 @@ footer li .soon{font-size:11px;letter-spacing:.14em;border:1px solid currentColo
 .research-page .res-hero h1{font-size:clamp(34px,4.4vw,56px);line-height:1.3;letter-spacing:.04em;color:#fff;}
 .research-page .res-hero .sec-lede{color:rgba(255,255,255,.75);max-width:720px;}
 .res-tech{padding:0 0 96px;}
-.res-tech .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);margin-top:48px;}
+.res-tech .tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);margin-top:48px;}
+.res-tech .tech-grid article:nth-child(-n+3){grid-column:span 2;}
+.res-tech .tech-grid article:nth-child(n+4){grid-column:span 3;}
 .res-tech .tech-grid article{background:var(--green-deep);padding:32px 30px 36px;min-height:170px;}
 .res-tech .tech-grid article:hover{background:var(--green-mid);}
 .res-tech .no{font-family:var(--latin);color:#C9A96F;font-size:13px;letter-spacing:.3em;}
@@ -574,13 +576,14 @@ footer li .soon{font-size:11px;letter-spacing:.14em;border:1px solid currentColo
 @media (max-width:860px){
   .research-page .res-hero{padding-top:110px;}
   .res-tech .tech-grid,.res-labs .lab-cols{grid-template-columns:1fr;}
+  .res-tech .tech-grid article{grid-column:auto;}
   .res-tech .tech-grid article{min-height:0;}
   .res-countries,.res-labs{padding:72px 0;}
 }
 
 /* ---------- 品质与合规页：浅色表格式版式 ---------- */
 .quality-page .page-head{padding-bottom:40px;}
-.quality-ways{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:10px 0 64px;}
+.quality-ways{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:10px 0 64px;}
 .quality-ways div{background:var(--paper);padding:30px 28px 34px;}
 .quality-ways .no{font-family:var(--latin);color:var(--gold);font-size:13px;letter-spacing:.3em;}
 .quality-ways h3{font-size:20px;margin:14px 0 10px;}
