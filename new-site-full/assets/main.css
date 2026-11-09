@@ -746,3 +746,33 @@ footer li .soon{font-size:11px;letter-spacing:.14em;border:1px solid currentColo
 /* 资讯页与问答页：沿用 .news-sec/.news-grid/.quality-ways/.channel，不另起版式 */
 .news-page .news-sec:last-of-type{padding-bottom:0;}
 .faq-page .news-sec{padding-bottom:0;}
+
+/* 品牌资讯文章页：文章体排版，不套用商品详情布局 */
+.article-page .article-standfirst{font-family:var(--serif);font-size:19px;line-height:1.8;color:var(--green);max-width:720px;}
+.article-page .article-body{max-width:720px;padding:10px 0 30px;}
+.article-page .article-body h2{font-family:var(--serif);font-size:23px;line-height:1.5;margin:54px 0 16px;padding-top:26px;border-top:1px solid var(--line);}
+.article-page .article-body h2:first-child{margin-top:10px;border-top:0;padding-top:0;}
+.article-page .article-body p{font-size:17px;line-height:1.95;color:#333;margin:0 0 18px;}
+.article-page .article-related{max-width:720px;padding:20px 0 10px;border-top:2px solid var(--green);}
+.article-page .article-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:18px;}
+.article-page .article-links a{font-size:15px;color:var(--green);text-decoration:underline;text-underline-offset:4px;}
+/* 问答页：问答与联系明确分区；问答为原生展开式 */
+.faq-page .faq-sec{padding:10px 0 30px;}
+.faq-page .contact-sec{padding:70px 0 40px;border-top:1px solid var(--line);}
+.faq-list{margin-top:44px;border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-item summary{cursor:pointer;list-style:none;font-size:17px;font-weight:500;line-height:1.6;padding:22px 34px 22px 0;position:relative;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";position:absolute;right:4px;top:20px;font-size:22px;font-weight:300;color:var(--green);}
+.faq-item[open ] summary{color:var(--green);}
+.faq-item[open ] summary::after{content:"–";}
+.faq-item .faq-answer{padding:0 0 24px;}
+.faq-item .faq-answer p{color:var(--mut);font-size:15px;line-height:1.9;margin:0 0 10px;}
+.faq-item .faq-links a{font-size:14px;color:var(--green);text-decoration:underline;text-underline-offset:3px;margin-right:18px;}
+@media (max-width:820px){
+  .article-page .article-standfirst{font-size:17px;}
+  .article-page .article-body p{font-size:16px;line-height:1.9;}
+  .article-page .article-body h2{font-size:20px;margin-top:44px;}
+  .faq-item summary{font-size:16px;padding:18px 30px 18px 0;}
+  .faq-page .contact-sec{padding-top:54px;}
+}
