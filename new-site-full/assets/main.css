@@ -429,9 +429,13 @@
       }
 
 /* ---------- 多页面整站补充 ---------- */
-.page-head{padding:150px 0 54px;}
+/* 修复：.page-head 与 .wrap 同元素，后写的 padding 覆盖了 .wrap 的左右内边距，
+   导致 1024 及以下宽度时页头文字贴住视口左边缘（实测 h1 x=0）。恢复 .wrap 的
+   左右内边距：桌面 32px、移动端 20px。影响使用 .page-head 的 6 页
+   （总览/资讯/问答/时间线/品质/九步），仅改内边距，不改结构。 */
+.page-head{padding:150px 32px 54px;}
 .page-head .sec-lede{max-width:720px;}
-@media (max-width:760px){.page-head{padding:110px 0 40px;}}
+@media (max-width:760px){.page-head{padding:110px 20px 40px;}}
 .crumb a{color:var(--mut);font-size:13px;letter-spacing:.1em;}
 .crumb a:hover{color:var(--green);}
 .crumb .sep{color:var(--mut);margin:0 8px;}
@@ -720,3 +724,25 @@ footer li .soon{font-size:11px;letter-spacing:.14em;border:1px solid currentColo
   .res-labs p{line-height:1.9;}
   .res-countries .country-tags span{padding:12px 18px;}
 }
+
+/* ---------- 第四批：四款详情变体 + 资讯/问答新页 ---------- */
+/* 眼霜：竖罐全幅展示，不裁切银盖与底部金属圈 */
+.pd-eye .pd-hero figure img{aspect-ratio:auto;}
+/* 光影油：透明滴管瓶全幅展示 */
+.pd-light .pd-hero figure img{aspect-ratio:auto;}
+/* 粉液：方瓶全幅展示 */
+.pd-powder .pd-hero figure img{aspect-ratio:auto;}
+/* 粉液专属：米肤色色块（示意色块，非产品照片） */
+.swatch-row{display:flex;align-items:center;gap:14px;margin-top:28px;color:var(--mut);font-size:14px;letter-spacing:.08em;}
+.swatch-row .swatch{width:44px;height:44px;background:#EAD9C2;border:1px solid var(--line);display:inline-block;flex:none;}
+/* 三代贴专属：深绿文字首屏（无图，纯文字设计） */
+.pd-mask .mask-hero-text{position:relative;background:var(--green);color:#fff;padding:52px 44px 56px;display:flex;flex-direction:column;justify-content:center;}
+.pd-mask .mask-hero-text .flag{position:static;display:inline-block;align-self:flex-start;background:rgba(255,255,255,.14);color:#fff;}
+.pd-mask .mask-latin{font-family:var(--latin);font-size:13px;letter-spacing:.3em;line-height:2;color:#C9A96F;margin:26px 0 0;}
+.pd-mask .mask-big{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);line-height:1.35;margin:18px 0 0;}
+.pd-mask .mask-sub{font-size:15px;color:rgba(255,255,255,.82);margin:16px 0 0;letter-spacing:.06em;}
+.pd-mask .mask-facts{font-size:14px;color:rgba(255,255,255,.66);margin:26px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.22);}
+@media (max-width:920px){.pd-mask .mask-hero-text{padding:40px 28px 44px;}}
+/* 资讯页与问答页：沿用 .news-sec/.news-grid/.quality-ways/.channel，不另起版式 */
+.news-page .news-sec:last-of-type{padding-bottom:0;}
+.faq-page .news-sec{padding-bottom:0;}
