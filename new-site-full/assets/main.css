@@ -769,6 +769,8 @@ footer li .soon{font-size:11px;letter-spacing:.14em;border:1px solid currentColo
 .faq-item .faq-answer{padding:0 0 24px;}
 .faq-item .faq-answer p{color:var(--mut);font-size:15px;line-height:1.9;margin:0 0 10px;}
 .faq-item .faq-links a{font-size:14px;color:var(--green);text-decoration:underline;text-underline-offset:3px;margin-right:18px;}
+/* 问答页联系方式为 3 格：第三格（备案号）横跨两列，不留空白格 */
+.faq-page .contact-sec .quality-ways > div:nth-child(3){grid-column:1 / -1;}
 @media (max-width:820px){
   .article-page .article-standfirst{font-size:17px;}
   .article-page .article-body p{font-size:16px;line-height:1.9;}
